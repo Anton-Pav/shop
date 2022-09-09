@@ -4,6 +4,7 @@ import {Preloader} from "./Preloader";
 import {GoodsList} from "./GoodsList";
 import {Cart} from "./Cart";
 import {BasketList} from "./BasketList";
+import {Alert} from "./Alert";
 
 function Shop() {
 
@@ -11,6 +12,7 @@ function Shop() {
     const [loading, setLoading] = useState(true)
     const [order, setOrder] = useState([])
     const [isBasketShow, setIsBasketShow] = useState(false)
+    const [alertName, setAlertName] = useState('')
 
     const handleBasketShow = () => {
         setIsBasketShow(!isBasketShow)
@@ -74,6 +76,10 @@ function Shop() {
 
             setOrder(newOrder)
         }
+        setAlertName(item.name)
+    }
+    const closeAlert = () => {
+        setAlertName('')
     }
 
     useEffect(function getGoods() {
@@ -99,6 +105,9 @@ function Shop() {
                                          decQuantity={decQuantity}
 
             />}
+            {
+                alertName && <Alert name={alertName} closeAlert={closeAlert}/>
+            }
         </main>
     )
 }

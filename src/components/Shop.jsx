@@ -78,6 +78,7 @@ function Shop() {
         }
         setAlertName(item.name)
     }
+
     const closeAlert = () => {
         setAlertName('')
     }

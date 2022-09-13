@@ -14,7 +14,7 @@ const initialState = {
 export const ContextProvider = ({children}) => {
     const [value, dispatch] = useReducer(reducer, initialState)
 
-    value.cloaseAlert = () => {
+    value.closeAlert = () => {
         dispatch({type: 'CLOSE_ALERT'})
     }
     value.removeFromBasket = (itemId) => {
@@ -31,6 +31,9 @@ export const ContextProvider = ({children}) => {
     }
     value.handleBasketShow = () => {
         dispatch({type: 'TOGGLE_BASKET'})
+    }
+    value.setGoods = (data) => {
+        dispatch({type: 'SET_GOODS', payload: data})
     }
 
     return <ShopContext.Provider value={value}>
